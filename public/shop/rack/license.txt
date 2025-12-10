@@ -1,0 +1,11 @@
+Model Information:
+* title:	Rack
+* source:	https://sketchfab.com/3d-models/rack-33a4b088025e48098eabd4b2b18122aa
+* author:	ilaida (https://sketchfab.com/ilaida)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Rack" (https://sketchfab.com/3d-models/rack-33a4b088025e48098eabd4b2b18122aa) by ilaida (https://sketchfab.com/ilaida) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

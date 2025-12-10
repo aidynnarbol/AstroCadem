@@ -1,0 +1,1058 @@
+/* Mission Map - Enhanced Real Planet Images */
+
+.mission-map-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+.mission-map-content {
+  position: relative;
+  z-index: 20;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========== HEADER ========== */
+
+.map-header {
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 50;
+}
+
+.header-button {
+  background: linear-gradient(135deg, 
+    rgba(17, 24, 39, 0.95) 0%, 
+    rgba(31, 41, 55, 0.9) 100%);
+  backdrop-filter: blur(24px) saturate(180%);
+  color: rgba(255, 255, 255, 0.95);
+  padding: 0.875rem 1.75rem;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.header-button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, 
+    rgba(31, 41, 55, 0.98) 0%, 
+    rgba(55, 65, 81, 0.95) 100%);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.header-button:active {
+  transform: translateY(0px);
+}
+
+/* ========== TITLE ========== */
+
+.map-title-section {
+  text-align: center;
+  padding: 1rem 1rem 2rem;
+  position: relative;
+  z-index: 30;
+}
+
+.map-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, 
+    #60a5fa 0%, 
+    #3b82f6 50%, 
+    #2563eb 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  animation: gradient-shift 6s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.map-subtitle {
+  font-size: 1rem;
+  color: rgba(209, 213, 219, 0.8);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* ========== UNIVERSES VIEW ========== */
+
+.universes-view {
+  position: relative;
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 200px);
+}
+
+/* ========== STAR PATH - ENHANCED ========== */
+
+.star-path {
+  stroke-width: 2.5px;
+  filter: drop-shadow(0 0 12px currentColor);
+  opacity: 0.8;
+}
+
+/* Interactive Spaceship - ENHANCED */
+.spaceship {
+  position: absolute;
+  left: 8%;
+  bottom: 20%;
+  z-index: 100;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.spaceship:hover {
+  transform: scale(1.15) translateY(-10px);
+}
+
+.spaceship-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, 
+    rgba(251, 191, 36, 0.6) 0%, 
+    rgba(251, 191, 36, 0.4) 30%,
+    rgba(251, 191, 36, 0.2) 50%,
+    transparent 70%);
+  border-radius: 50%;
+  filter: blur(35px);
+  animation: pulse-glow-enhanced 3s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes pulse-glow-enhanced {
+  0%, 100% { 
+    opacity: 0.5; 
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% { 
+    opacity: 1; 
+    transform: translate(-50%, -50%) scale(1.4);
+  }
+}
+
+.spaceship-icon {
+  position: relative;
+  font-size: 3.5rem;
+  filter: drop-shadow(0 0 35px rgba(251, 191, 36, 1));
+  z-index: 1;
+  transition: all 0.3s ease;
+  animation: rocket-float 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes rocket-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(2deg); }
+  75% { transform: translateY(8px) rotate(-2deg); }
+}
+
+/* ========== REAL UNIVERSES - ULTRA ENHANCED ========== */
+
+.universe-wrapper {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  will-change: transform;
+}
+
+.universe {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.6));
+  will-change: transform, filter;
+}
+
+.universe:hover {
+  transform: scale(1.2) translateY(-15px);
+  filter: drop-shadow(0 35px 80px rgba(59, 130, 246, 0.9));
+}
+
+.universe:active {
+  transform: scale(1.1) translateY(-10px);
+}
+
+.universe-locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.universe-locked:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.6));
+}
+
+/* Real galaxy image container - ENHANCED */
+.universe-real {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}
+
+.universe-galaxy-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  animation: universe-rotate-enhanced 70s linear infinite;
+  box-shadow: 
+    0 0 100px rgba(0, 0, 0, 0.9),
+    inset -25px -25px 60px rgba(0, 0, 0, 0.5),
+    inset 20px 20px 50px rgba(255, 255, 255, 0.1);
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@keyframes universe-rotate-enhanced {
+  0% { 
+    transform: rotate(0deg) scale(1) translateZ(0);
+    filter: brightness(1) contrast(1.1);
+  }
+  25% { 
+    transform: rotate(90deg) scale(1.04) translateZ(0);
+    filter: brightness(1.15) contrast(1.15);
+  }
+  50% { 
+    transform: rotate(180deg) scale(1.06) translateZ(0);
+    filter: brightness(1.25) contrast(1.2);
+  }
+  75% { 
+    transform: rotate(270deg) scale(1.04) translateZ(0);
+    filter: brightness(1.15) contrast(1.15);
+  }
+  100% { 
+    transform: rotate(360deg) scale(1) translateZ(0);
+    filter: brightness(1) contrast(1.1);
+  }
+}
+
+/* Добавить текстуру звёзд поверх галактики */
+.universe-galaxy-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 60% 70%, white, transparent),
+    radial-gradient(1px 1px at 50% 50%, white, transparent),
+    radial-gradient(1px 1px at 80% 10%, white, transparent),
+    radial-gradient(2px 2px at 90% 60%, white, transparent),
+    radial-gradient(1px 1px at 33% 85%, white, transparent);
+  background-size: 200% 200%;
+  background-position: 0% 0%;
+  opacity: 0.4;
+  mix-blend-mode: screen;
+  animation: stars-twinkle 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes stars-twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.universe-galaxy-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid;
+  opacity: 0.5;
+  animation: pulse-border-enhanced 4s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+@keyframes pulse-border-enhanced {
+  0%, 100% { 
+    opacity: 0.4; 
+    transform: scale(1);
+    box-shadow: 0 0 20px currentColor;
+  }
+  50% { 
+    opacity: 0.8; 
+    transform: scale(1.03);
+    box-shadow: 0 0 40px currentColor;
+  }
+}
+
+.universe-glow-ring {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: glow-pulse-universe-enhanced 5s ease-in-out infinite;
+  pointer-events: none;
+  filter: blur(25px);
+  will-change: opacity, transform;
+}
+
+@keyframes glow-pulse-universe-enhanced {
+  0%, 100% { 
+    opacity: 0.4; 
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.8; 
+    transform: scale(1.2);
+  }
+}
+
+/* Floating particles around universe - ENHANCED */
+.universe-particles-real {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.universe-particle-real {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  animation: orbit-real-enhanced calc(18s + var(--delay, 0s) * 4s) linear infinite;
+  transform-origin: 0 0;
+  transform: rotate(var(--angle)) translateX(170px);
+  filter: blur(1.5px);
+  opacity: 0.9;
+  box-shadow: 0 0 10px currentColor;
+  will-change: transform, opacity;
+}
+
+@keyframes orbit-real-enhanced {
+  0% { 
+    transform: rotate(var(--angle)) translateX(170px) rotate(0deg) scale(1);
+    opacity: 0.8;
+  }
+  25% {
+    opacity: 1;
+    transform: rotate(calc(var(--angle) + 90deg)) translateX(180px) rotate(90deg) scale(1.2);
+  }
+  50% {
+    opacity: 0.7;
+    transform: rotate(calc(var(--angle) + 180deg)) translateX(170px) rotate(180deg) scale(1);
+  }
+  75% {
+    opacity: 1;
+    transform: rotate(calc(var(--angle) + 270deg)) translateX(180px) rotate(270deg) scale(1.2);
+  }
+  100% { 
+    transform: rotate(calc(var(--angle) + 360deg)) translateX(170px) rotate(360deg) scale(1);
+    opacity: 0.8;
+  }
+}
+
+/* Universe Tooltip - ENHANCED */
+.universe-tooltip {
+  position: absolute;
+  top: calc(100% + 25px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, 
+    rgba(17, 24, 39, 0.98) 0%, 
+    rgba(31, 41, 55, 0.95) 100%);
+  backdrop-filter: blur(25px) saturate(200%);
+  padding: 1.25rem 1.5rem;
+  border-radius: 18px;
+  border: 2px solid;
+  min-width: 300px;
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+  pointer-events: none;
+  animation: tooltip-appear 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes tooltip-appear {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+.universe-season {
+  font-size: 0.7rem;
+  opacity: 0.9;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.375rem;
+}
+
+.universe-name {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 0.625rem;
+  line-height: 1.2;
+  text-shadow: 0 0 20px currentColor;
+}
+
+.universe-description {
+  font-size: 0.9rem;
+  color: rgba(209, 213, 219, 0.95);
+  line-height: 1.5;
+  margin-bottom: 0.125rem;
+}
+
+/* ========== PLANETS VIEW - ULTRA ENHANCED ========== */
+
+.planets-view {
+  position: relative;
+  flex: 1;
+  padding: 3rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 250px);
+}
+
+.planets-container {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  height: 650px;
+  margin: 0 auto;
+}
+
+.planet-wrapper {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  will-change: transform;
+}
+
+.planet {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.7));
+  will-change: transform, filter;
+}
+
+.planet:hover {
+  transform: scale(1.15) translateY(-15px) rotateY(10deg);
+  filter: drop-shadow(0 35px 80px rgba(0, 0, 0, 0.9));
+}
+
+.planet:active {
+  transform: scale(1.08) translateY(-10px);
+}
+
+/* ========== REAL PLANETS - ULTIMATE ========== */
+
+.planet-real {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d;
+  perspective: 1500px;
+}
+
+.planet-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-size: 200% 100%;
+  background-position: center center;
+  overflow: hidden;
+  animation: planet-spin-enhanced 45s linear infinite;
+  box-shadow: 
+    0 35px 100px rgba(0, 0, 0, 0.7),
+    inset -25px -25px 50px rgba(0, 0, 0, 0.7),
+    inset 25px 25px 50px rgba(255, 255, 255, 0.15);
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  will-change: background-position;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@keyframes planet-spin-enhanced {
+  0% { 
+    background-position: 0% center;
+    filter: brightness(1) contrast(1.1);
+  }
+  50% { 
+    background-position: 100% center;
+    filter: brightness(1.1) contrast(1.15);
+  }
+  100% { 
+    background-position: 200% center;
+    filter: brightness(1) contrast(1.1);
+  }
+}
+
+/* Добавить текстуру кратеров и деталей */
+.planet-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 30% 40%, rgba(0, 0, 0, 0.4) 2px, transparent 2px),
+    radial-gradient(circle at 70% 30%, rgba(0, 0, 0, 0.3) 3px, transparent 3px),
+    radial-gradient(circle at 50% 70%, rgba(0, 0, 0, 0.35) 2.5px, transparent 2.5px),
+    radial-gradient(circle at 20% 80%, rgba(0, 0, 0, 0.3) 2px, transparent 2px),
+    radial-gradient(circle at 80% 75%, rgba(0, 0, 0, 0.4) 3px, transparent 3px);
+  background-size: 100% 100%;
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Добавить облака/атмосферу */
+.planet-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 40% 30%, rgba(255, 255, 255, 0.3), transparent 50%),
+    radial-gradient(ellipse at 60% 65%, rgba(255, 255, 255, 0.2), transparent 40%);
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  border-radius: 50%;
+  animation: clouds-drift 30s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes clouds-drift {
+  from { transform: translateX(0) scale(1); opacity: 0.4; }
+  50% { transform: translateX(-20%) scale(1.05); opacity: 0.6; }
+  to { transform: translateX(0) scale(1); opacity: 0.4; }
+}
+
+/* Atmospheric glow effect - ENHANCED */
+.planet-atmosphere-real {
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  top: -5%;
+  left: -5%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, 
+    transparent 30%, 
+    rgba(135, 206, 250, 0.5) 60%,
+    rgba(135, 206, 250, 0.3) 70%,
+    transparent 82%);
+  opacity: 0.8;
+  animation: atmosphere-pulse-enhanced 6s ease-in-out infinite;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+@keyframes atmosphere-pulse-enhanced {
+  0%, 100% { 
+    opacity: 0.6; 
+    transform: scale(1);
+    filter: blur(8px);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.03);
+    filter: blur(12px);
+  }
+}
+
+/* Shadow from sunlight - ENHANCED */
+.planet-shadow-real {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 135% 50%, 
+    transparent 20%, 
+    rgba(0, 0, 0, 0.75) 55%,
+    rgba(0, 0, 0, 0.4) 75%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Sunlight highlight - ENHANCED */
+.planet-highlight-real {
+  position: absolute;
+  width: 55%;
+  height: 55%;
+  top: 8%;
+  left: 12%;
+  border-radius: 50%;
+  background: radial-gradient(circle, 
+    rgba(255, 255, 255, 0.7) 0%, 
+    rgba(255, 255, 255, 0.4) 30%,
+    transparent 65%);
+  filter: blur(25px);
+  z-index: 1;
+  animation: highlight-shimmer 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes highlight-shimmer {
+  0%, 100% { 
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Outer glow - ENHANCED */
+.planet-glow-real {
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  top: -20%;
+  left: -20%;
+  border-radius: 50%;
+  opacity: 0.5;
+  filter: blur(70px);
+  pointer-events: none;
+  animation: glow-breathe-enhanced 7s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+@keyframes glow-breathe-enhanced {
+  0%, 100% { 
+    opacity: 0.4; 
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.7; 
+    transform: scale(1.2);
+  }
+}
+
+/* Orbital ring around planet - ENHANCED */
+.planet-orbit-ring {
+  position: absolute;
+  width: 160%;
+  height: 38%;
+  top: 31%;
+  left: -30%;
+  border-radius: 50%;
+  border: 3px solid;
+  opacity: 0.4;
+  transform: rotateX(75deg);
+  animation: ring-rotate-enhanced 18s linear infinite;
+  filter: drop-shadow(0 0 15px currentColor);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+@keyframes ring-rotate-enhanced {
+  0% { 
+    transform: rotateX(75deg) rotateZ(0deg);
+    opacity: 0.3;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    transform: rotateX(75deg) rotateZ(180deg);
+    opacity: 0.6;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% { 
+    transform: rotateX(75deg) rotateZ(360deg);
+    opacity: 0.3;
+  }
+}
+
+/* Добавить второе кольцо */
+.planet-orbit-ring-2 {
+  position: absolute;
+  width: 140%;
+  height: 32%;
+  top: 34%;
+  left: -20%;
+  border-radius: 50%;
+  border: 2px dashed;
+  opacity: 0.2;
+  transform: rotateX(75deg);
+  animation: ring-rotate-enhanced 25s linear infinite reverse;
+  filter: drop-shadow(0 0 8px currentColor);
+  pointer-events: none;
+}
+
+/* Progress bar - ENHANCED */
+.planet-progress {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 8px;
+  background: linear-gradient(90deg, 
+    rgba(31, 41, 55, 0.95),
+    rgba(55, 65, 81, 0.9));
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 
+    0 3px 10px rgba(0, 0, 0, 0.4) inset,
+    0 0 0 1px rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.planet-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, 
+    #10b981 0%, 
+    #34d399 50%, 
+    #6ee7b7 100%);
+  background-size: 200% 100%;
+  border-radius: 6px;
+  box-shadow: 
+    0 0 15px rgba(16, 185, 129, 0.8),
+    0 0 30px rgba(16, 185, 129, 0.4) inset;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: progress-shine 2s linear infinite;
+  position: relative;
+}
+
+@keyframes progress-shine {
+  from { background-position: 200% center; }
+  to { background-position: -200% center; }
+}
+
+.planet-progress-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.4) 50%, 
+    transparent 100%);
+  animation: shine-sweep 3s ease-in-out infinite;
+}
+
+@keyframes shine-sweep {
+  0% { transform: translateX(-100%); }
+  50%, 100% { transform: translateX(200%); }
+}
+
+/* Stars rating - ENHANCED */
+.planet-stars {
+  position: absolute;
+  bottom: -55px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.4rem;
+}
+
+.star {
+  width: 22px;
+  height: 22px;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+
+.star:hover {
+  transform: scale(1.3) rotate(15deg);
+}
+
+.star-filled {
+  color: #fbbf24;
+  fill: #fbbf24;
+  filter: drop-shadow(0 0 10px rgba(251, 191, 36, 1));
+  animation: star-pulse 2s ease-in-out infinite;
+}
+
+@keyframes star-pulse {
+  0%, 100% { 
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.8));
+  }
+  50% { 
+    filter: drop-shadow(0 0 15px rgba(251, 191, 36, 1));
+  }
+}
+
+.star-empty {
+  color: rgba(75, 85, 99, 0.5);
+  fill: none;
+  opacity: 0.7;
+}
+
+/* Planet label - ENHANCED */
+.planet-label {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.planet-name {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 0.4rem;
+  text-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.8),
+    0 0 30px currentColor;
+  letter-spacing: -0.01em;
+}
+
+.planet-missions-count {
+  font-size: 0.95rem;
+  color: rgba(156, 163, 175, 0.95);
+  font-weight: 600;
+  background: rgba(31, 41, 55, 0.6);
+  padding: 0.25rem 0.75rem;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Planet Tooltip - ENHANCED */
+.planet-tooltip {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 360px;
+  z-index: 1000;
+  pointer-events: none;
+  animation: tooltip-appear 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.planet-tooltip-top {
+  top: calc(100% + 110px);
+}
+
+.planet-tooltip-bottom {
+  bottom: calc(100% + 110px);
+}
+
+.planet-tooltip-content {
+  background: linear-gradient(135deg, 
+    rgba(17, 24, 39, 0.98) 0%, 
+    rgba(31, 41, 55, 0.96) 100%);
+  backdrop-filter: blur(30px) saturate(200%);
+  border-radius: 20px;
+  padding: 1.75rem;
+  border: 2px solid;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+}
+
+.planet-tooltip-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 0.875rem;
+  text-align: center;
+  text-shadow: 0 0 25px currentColor;
+  letter-spacing: -0.02em;
+}
+
+.planet-tooltip-description {
+  color: rgba(209, 213, 219, 0.95);
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.planet-start-button {
+  width: 100%;
+  padding: 1.125rem;
+  border-radius: 16px;
+  font-weight: 800;
+  font-size: 1.0625rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.25) inset;
+  pointer-events: all;
+  position: relative;
+  overflow: hidden;
+}
+
+.planet-start-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.3) 50%, 
+    transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.planet-start-button:hover::before {
+  transform: translateX(100%);
+}
+
+.planet-start-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+}
+
+.planet-start-button:active {
+  transform: translateY(-1px);
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 1024px) {
+  .universe {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .planet-real {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media (max-width: 768px) {
+  .spaceship {
+    left: 5%;
+    bottom: 15%;
+  }
+  
+  .spaceship-icon {
+    font-size: 2.5rem;
+  }
+  
+  .universe {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .planet-real {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .planets-container {
+    height: 550px;
+  }
+  
+  .planet-tooltip {
+    width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .spaceship {
+    display: none;
+  }
+  
+  .header-button span {
+    display: none;
+  }
+  
+  .universe {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .planet-real {
+    width: 110px;
+    height: 110px;
+  }
+  
+  .planet-tooltip {
+    width: 280px;
+  }
+  
+  .planets-container {
+    height: 480px;
+  }
+}
+
+/* Performance optimization - ULTIMATE */
+.universe-galaxy-image,
+.planet-image,
+.universe-glow-ring,
+.planet-glow-real,
+.universe-particle-real,
+.planet-orbit-ring,
+.universe,
+.planet {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
