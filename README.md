@@ -1,16 +1,96 @@
-# React + Vite
+# AstroCadem
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive educational platform that teaches children financial literacy and cybersecurity through a space-themed adventure.
 
-Currently, two official plugins are available:
+**Live Demo:** https://astro-cadem.vercel.app  
+**Demo Video:** [Link]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## About
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Children spend significant time online but rarely learn essential life skills — managing money, protecting themselves from scams, or understanding digital advertising. AstroCadem addresses this gap by delivering education through an engaging space adventure where learning happens naturally during gameplay.
 
-## Expanding the ESLint configuration
+Players become cadets at a space academy, traveling to different planets and completing missions that teach:
+- Financial literacy
+- Cybersecurity fundamentals
+- Digital hygiene
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Target Audience:** Children ages 8-13. Secondary audience includes parents and educators.
+
+---
+
+## Features
+
+### Finance Planet
+- 5 interactive missions with lessons and quizzes
+- Topics: history of money, budgeting, savings, smart purchasing
+- Character mentor: Captain Moneti
+
+### Laboratory Tools
+- **Budget Simulator** — manage income and expenses
+- **Savings Calculator** — calculate goals and timelines
+- **Price Comparison** — find the best deals
+
+### Gamification System
+- Levels and XP progression
+- Coins earned through mission completion
+- 14 achievement types
+- Daily streak tracking
+
+### Parent Dashboard
+- Track child's learning progress
+- View statistics on completed topics
+
+### Multilingual Support
+- Russian
+- Kazakh
+- English
+
+---
+
+## Tech Stack
+
+| Category | Technologies |
+|----------|--------------|
+| Frontend | React 19, Vite, Tailwind CSS |
+| 3D Graphics | Three.js, React Three Fiber, React Three Drei |
+| Animations | Framer Motion |
+| Routing | React Router v7 |
+| Data Storage | LocalStorage |
+| Deployment | Vercel |
+
+---
+
+## Project Scope
+
+- 50+ React components
+- 10 educational missions
+- 3 practical tools
+- 3 interface languages
+- 14 achievement types
+
+---
+
+## Future Development
+
+- Expand Finance Planet storyline
+- Pilot testing in schools
+- Complete Cybersecurity Planet content
+- AI mentor with adaptive learning
+
+---
+
+## Author
+
+**Aidyn Narbol** — concept, design, UX/UI, project architecture
+
+Code developed with AI assistant (Claude) — task definition, testing, iterations.
+
+GitHub: [@aidynnarbol](https://github.com/aidynnarbol)
+
+---
+
+## License
+
+MIT License
