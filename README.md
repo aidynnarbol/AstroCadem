@@ -3,7 +3,7 @@
 An interactive educational platform that teaches children financial literacy and cybersecurity through a space-themed adventure.
 
 **Live Demo:** https://astro-cadem.vercel.app  
-**Demo Video:** [Link]
+**Demo Video:** https://youtu.be/AdxYGUR-dtA
 
 ---
 
